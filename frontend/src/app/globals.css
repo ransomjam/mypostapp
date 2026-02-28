@@ -47,3 +47,23 @@ body {
   backdrop-filter: blur(12px);
   border: 1px solid rgba(148, 163, 184, 0.1);
 }
+
+/* Mobile touch targets */
+@media (max-width: 640px) {
+  input, select, textarea, button {
+    font-size: 16px; /* Prevents iOS zoom on focus */
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Safe area padding for notched phones */
+@supports (padding: env(safe-area-inset-bottom)) {
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}

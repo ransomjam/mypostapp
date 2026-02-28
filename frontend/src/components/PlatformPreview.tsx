@@ -32,9 +32,9 @@ export default function PlatformPreview({ content, platform, metadata }: Platfor
             {/* Simulated Feed Card */}
             <div className="p-5">
                 <div className={`rounded-xl border overflow-hidden ${platform === 'X' ? 'bg-black border-slate-700' :
-                        platform === 'LINKEDIN' ? 'bg-white border-slate-200' :
-                            platform === 'FACEBOOK' ? 'bg-white border-slate-200' :
-                                'bg-gradient-to-br from-slate-900 to-slate-800 border-slate-700'
+                    platform === 'LINKEDIN' ? 'bg-white border-slate-200' :
+                        platform === 'FACEBOOK' ? 'bg-white border-slate-200' :
+                            'bg-gradient-to-br from-slate-900 to-slate-800 border-slate-700'
                     }`}>
                     {/* User Header */}
                     <div className={`flex items-center gap-3 p-4 ${platform === 'LINKEDIN' || platform === 'FACEBOOK' ? 'text-gray-900' : 'text-white'
@@ -63,8 +63,8 @@ export default function PlatformPreview({ content, platform, metadata }: Platfor
 
                     {/* Platform-specific interactions */}
                     <div className={`px-4 py-3 border-t flex items-center gap-6 text-xs ${platform === 'LINKEDIN' || platform === 'FACEBOOK'
-                            ? 'border-slate-200 text-gray-500'
-                            : 'border-slate-700 text-slate-400'
+                        ? 'border-slate-200 text-gray-500'
+                        : 'border-slate-700 text-slate-400'
                         }`}>
                         {platform === 'INSTAGRAM' && (
                             <>
@@ -111,7 +111,7 @@ export default function PlatformPreview({ content, platform, metadata }: Platfor
 
             {/* Metadata */}
             {metadata && (
-                <div className="px-5 pb-4 grid grid-cols-4 gap-2">
+                <div className="px-4 sm:px-5 pb-4 grid grid-cols-2 sm:grid-cols-4 gap-2">
                     {[
                         { label: 'Words', value: metadata.wordCount },
                         { label: 'Chars', value: metadata.charCount },

@@ -46,9 +46,9 @@ export default function ScorePanel({ score, onFix, isFixing }: ScorePanelProps) 
             <h3 className="text-lg font-semibold text-white mb-4"><ChartBarIcon className="w-5 h-5 inline-block mr-1" /> Engagement Score</h3>
 
             {/* Score Gauge */}
-            <div className="flex items-center gap-6 mb-6">
-                <div className="relative w-32 h-32">
-                    <svg className="w-32 h-32 transform -rotate-90" viewBox="0 0 120 120">
+            <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 mb-6">
+                <div className="relative w-24 h-24 sm:w-32 sm:h-32 shrink-0">
+                    <svg className="w-24 h-24 sm:w-32 sm:h-32 transform -rotate-90" viewBox="0 0 120 120">
                         <circle cx="60" cy="60" r="54" fill="none" stroke="#1e293b" strokeWidth="8" />
                         <circle
                             cx="60"

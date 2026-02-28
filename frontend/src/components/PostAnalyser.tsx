@@ -69,7 +69,7 @@ export default function PostAnalyser() {
             </div>
             <div className="space-y-5">
                 <textarea value={content} onChange={(e) => setContent(e.target.value)} placeholder="Paste your post content..." className="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-violet-500/50 resize-none" rows={6} />
-                <div className="grid grid-cols-5 gap-2">
+                <div className="grid grid-cols-3 sm:grid-cols-5 gap-2">
                     {PLATFORMS.map((p) => (
                         <button key={p.key} onClick={() => setPlatform(p.key)} className={`flex flex-col items-center gap-1 px-3 py-3 rounded-xl text-xs font-medium transition-all ${platform === p.key ? 'bg-violet-500/20 text-violet-300 border border-violet-500/30' : 'bg-slate-800/40 text-slate-400 border border-slate-700/50 hover:border-slate-600'}`}>
                             <span className="text-xl">{p.icon}</span><span>{p.label}</span>

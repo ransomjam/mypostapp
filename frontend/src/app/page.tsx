@@ -20,11 +20,11 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-slate-950 relative overflow-hidden">
       {/* Background gradient orbs */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-violet-600/20 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-indigo-600/20 rounded-full blur-3xl" />
+      <div className="absolute top-0 left-1/4 w-48 sm:w-96 h-48 sm:h-96 bg-violet-600/20 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 right-1/4 w-48 sm:w-96 h-48 sm:h-96 bg-indigo-600/20 rounded-full blur-3xl" />
 
       {/* Nav */}
-      <nav className="relative z-10 flex items-center justify-between px-8 py-6 max-w-7xl mx-auto">
+      <nav className="relative z-10 flex items-center justify-between px-4 sm:px-8 py-4 sm:py-6 max-w-7xl mx-auto">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-violet-500 to-indigo-600 flex items-center justify-center text-white font-bold text-lg shadow-lg shadow-violet-500/25">P</div>
           <span className="text-xl font-bold text-white">my<span className="text-violet-400">postapp</span></span>
@@ -36,30 +36,30 @@ export default function HomePage() {
       </nav>
 
       {/* Hero */}
-      <main className="relative z-10 max-w-7xl mx-auto px-8 pt-20 pb-32 text-center">
+      <main className="relative z-10 max-w-7xl mx-auto px-4 sm:px-8 pt-12 sm:pt-20 pb-16 sm:pb-32 text-center">
         <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-violet-500/10 border border-violet-500/20 rounded-full text-xs text-violet-300 mb-6">
           <span className="w-2 h-2 rounded-full bg-violet-400 animate-pulse" />
           AI-Powered Social Media Intelligence
         </div>
 
-        <h1 className="text-5xl md:text-7xl font-extrabold text-white leading-tight mb-6">
+        <h1 className="text-3xl sm:text-5xl md:text-7xl font-extrabold text-white leading-tight mb-4 sm:mb-6">
           Create smarter posts.<br />
           <span className="gradient-text">Score higher engagement.</span>
         </h1>
 
-        <p className="text-lg text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+        <p className="text-base sm:text-lg text-slate-400 max-w-2xl mx-auto mb-8 sm:mb-10 leading-relaxed">
           mypostapp generates, analyses, and optimises your social media content with AI.
           Get engagement scores, risk detection, platform adaptation, and image optimisation — all in one platform.
         </p>
 
         <div className="flex items-center justify-center gap-4">
-          <Link href="/register" className="px-8 py-4 bg-gradient-to-r from-violet-600 to-indigo-600 text-white font-semibold rounded-2xl hover:from-violet-500 hover:to-indigo-500 transition-all shadow-lg shadow-violet-500/25 hover:shadow-violet-500/40 text-lg">
+          <Link href="/register" className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-violet-600 to-indigo-600 text-white font-semibold rounded-2xl hover:from-violet-500 hover:to-indigo-500 transition-all shadow-lg shadow-violet-500/25 hover:shadow-violet-500/40 text-base sm:text-lg">
             Start for Free →
           </Link>
         </div>
 
         {/* Features grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-24 text-left">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mt-12 sm:mt-24 text-left">
           {[
             { icon: '✍️', title: 'AI Post Generation', desc: 'Generate platform-optimised posts with hook-first strategy and smart CTAs' },
             { icon: '📊', title: 'Engagement Scoring', desc: 'Deterministic scoring across 7 dimensions with improvement suggestions' },

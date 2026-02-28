@@ -110,7 +110,7 @@ export default function ImageOptimiser() {
                             </div>
                         </div>
                     ) : (
-                        <div className="h-full min-h-[300px] flex items-center justify-center bg-slate-800/20 border border-slate-700/30 rounded-2xl border-dashed">
+                        <div className="h-full min-h-[200px] sm:min-h-[300px] flex items-center justify-center bg-slate-800/20 border border-slate-700/30 rounded-2xl border-dashed">
                             <div className="text-center text-slate-500">
                                 <span className="text-4xl block mb-3">📐</span>
                                 <p className="text-sm">Optimised results appear here</p>

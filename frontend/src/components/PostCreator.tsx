@@ -209,8 +209,8 @@ export default function PostCreator() {
         <div className="space-y-8">
             {/* Header */}
             <div>
-                <h2 className="text-2xl font-bold text-white">Create New Post</h2>
-                <p className="text-slate-400 mt-1">Generate AI-powered social media content optimised for your platform</p>
+                <h2 className="text-xl sm:text-2xl font-bold text-white">Create New Post</h2>
+                <p className="text-sm sm:text-base text-slate-400 mt-1">Generate AI-powered social media content optimised for your platform</p>
             </div>
 
             {/* Input Form */}
@@ -283,7 +283,7 @@ export default function PostCreator() {
                     {/* Platform Selector */}
                     <div>
                         <label className="block text-sm font-medium text-slate-300 mb-2">Platform</label>
-                        <div className="grid grid-cols-5 gap-2">
+                        <div className="grid grid-cols-3 sm:grid-cols-5 gap-2">
                             {PLATFORMS.map((p) => (
                                 <button
                                     key={p.key}
@@ -303,7 +303,7 @@ export default function PostCreator() {
                     {/* Tone */}
                     <div>
                         <label className="block text-sm font-medium text-slate-300 mb-2">Tone</label>
-                        <div className="grid grid-cols-5 gap-2">
+                        <div className="grid grid-cols-3 sm:grid-cols-5 gap-2">
                             {TONES.map((t) => (
                                 <button
                                     key={t.key}
@@ -327,7 +327,7 @@ export default function PostCreator() {
                     {/* Length */}
                     <div>
                         <label className="block text-sm font-medium text-slate-300 mb-2">Length</label>
-                        <div className="grid grid-cols-4 gap-2">
+                        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                             {LENGTHS.map((l) => (
                                 <button
                                     key={l.key}
@@ -445,7 +445,7 @@ export default function PostCreator() {
                             </button>
                         </div>
                     ) : (
-                        <div className="h-full min-h-[400px] flex items-center justify-center bg-slate-800/20 border border-slate-700/30 rounded-2xl border-dashed">
+                        <div className="h-full min-h-[200px] sm:min-h-[400px] flex items-center justify-center bg-slate-800/20 border border-slate-700/30 rounded-2xl border-dashed">
                             <div className="text-center text-slate-500">
                                 <SparklesIcon className="w-6 h-6 text-violet-400" />
                                 <p className="text-sm">Your post preview will appear here</p>
@@ -459,7 +459,7 @@ export default function PostCreator() {
             {humanizedContent && result && (
                 <div className="rounded-2xl border border-teal-500/30 bg-teal-950/20 overflow-hidden">
                     {/* Header */}
-                    <div className="flex items-center justify-between px-6 py-4 border-b border-teal-500/20 bg-teal-900/10">
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 px-4 sm:px-6 py-4 border-b border-teal-500/20 bg-teal-900/10">
                         <div className="flex items-center gap-3">
                             <UserIcon className="w-8 h-8 rounded-lg bg-teal-500/20 flex items-center justify-center text-teal-300" />
                             <div>
@@ -518,7 +518,7 @@ export default function PostCreator() {
             {analysis && (
                 <div className="bg-slate-800/30 border border-slate-700/30 rounded-2xl p-6">
                     <h3 className="text-lg font-semibold text-white mb-4"><ChartBarIcon className="w-5 h-5 inline-block mr-1" /> Structural Analysis</h3>
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4">
                         {[
                             { label: 'Words', value: analysis.wordCount, icon: <PencilIcon className="w-5 h-5 inline-block mr-1" /> },
                             { label: 'Characters', value: analysis.charCount, icon: <DocumentIcon className="w-5 h-5 inline-block mr-1" /> },
