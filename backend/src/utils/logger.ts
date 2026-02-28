@@ -14,7 +14,7 @@ export const logger = winston.createLogger({
         errors({ stack: true }),
         logFormat
     ),
-    defaultMeta: { service: 'postiq-api' },
+    defaultMeta: { service: 'mypostapp-api' },
     transports: [
         new winston.transports.Console({
             format: combine(colorize(), logFormat),

@@ -82,7 +82,7 @@ app.use(errorHandler);
 
 // Start server
 app.listen(config.port, () => {
-    logger.info(`🚀 PostIQ API running on port ${config.port}`);
+    logger.info(`🚀 mypostapp API running on port ${config.port}`);
     logger.info(`📝 Environment: ${config.env}`);
     logger.info(`🔗 Frontend URL: ${config.cors.frontendUrl}`);
 });

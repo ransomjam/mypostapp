@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { api } from '@/lib/api';
 import { Platform, Tone, LengthPreference, PLATFORMS, TONES, LENGTHS, GenerationResult, ScoringResult, RiskResult, AnalysisResult } from '@/lib/types';
+import { PaperAirplaneIcon, UserIcon, SparklesIcon, PencilIcon, ChartBarIcon, QuestionMarkCircleIcon, TagIcon, ArrowsRightLeftIcon, HeartIcon, BookOpenIcon, LightBulbIcon, CheckCircleIcon, ExclamationTriangleIcon, ShieldCheckIcon, SparklesIcon as SparklesOutlineIcon, DocumentIcon, ChatBubbleLeftEllipsisIcon, FaceSmileIcon, Bars3Icon, PuzzlePieceIcon } from '@heroicons/react/24/outline';
 import PlatformPreview from './PlatformPreview';
 import ScorePanel from './ScorePanel';
 import RiskPanel from './RiskPanel';
@@ -230,7 +231,7 @@ export default function PostCreator() {
                     {/* Context Profiles */}
                     {bgContexts.length > 0 && (
                         <div>
-                            <label className="block text-sm font-medium text-slate-300 mb-2">Include Background Context 🧠</label>
+                            <label className="block text-sm font-medium text-slate-300 mb-2"><PuzzlePieceIcon className="w-5 h-5 inline-block mr-1" /> Include Background Context</label>
                             <p className="text-xs text-slate-400 mb-2">Attach knowledge items so AI can use correct facts, branding, or specific details.</p>
                             <div className="space-y-2 max-h-40 overflow-y-auto pr-2 custom-scrollbar">
                                 {bgContexts.map(ctx => (
@@ -272,7 +273,7 @@ export default function PostCreator() {
                                     />
                                 </div>
                                 <div className="flex flex-col flex-1 min-w-0">
-                                    <span className="text-sm font-medium">Use My Style Samples ✍️</span>
+                                    <SparklesOutlineIcon className="w-5 h-5 inline-block mr-1" /> <span className="text-sm font-medium">Use My Style Samples</span>
                                     <span className="text-xs opacity-70 block mt-0.5">Include your saved style samples to match your unique brand voice.</span>
                                 </div>
                             </label>
@@ -316,7 +317,7 @@ export default function PostCreator() {
                                             : 'bg-slate-800/40 text-slate-400 border border-slate-700/50 hover:border-slate-600'
                                         }`}
                                 >
-                                    <span>{t.emoji}</span>
+
                                     {t.label}
                                 </button>
                             ))}
@@ -373,7 +374,7 @@ export default function PostCreator() {
                                     : 'bg-slate-800/40 text-slate-400 border-slate-700/50 hover:border-slate-600'
                                     }`}
                             >
-                                ✨ Auto-detect
+                                <SparklesOutlineIcon className="w-4 h-4 inline-block mr-1" /> Auto-detect
                             </button>
                         </div>
                         {!autoAudience && (
@@ -406,7 +407,7 @@ export default function PostCreator() {
                             </>
                         ) : (
                             <>
-                                <span>🚀</span> Generate Post
+                                <PaperAirplaneIcon className="w-5 h-5 inline-block mr-1" /> Generate Post
                             </>
                         )}
                     </button>
@@ -438,7 +439,7 @@ export default function PostCreator() {
                                     </>
                                 ) : (
                                     <>
-                                        <span>🧍</span> Humanize Post
+                                        <UserIcon className="w-5 h-5 inline-block mr-1" /> Humanize Post
                                     </>
                                 )}
                             </button>
@@ -446,7 +447,7 @@ export default function PostCreator() {
                     ) : (
                         <div className="h-full min-h-[400px] flex items-center justify-center bg-slate-800/20 border border-slate-700/30 rounded-2xl border-dashed">
                             <div className="text-center text-slate-500">
-                                <span className="text-5xl block mb-3">✨</span>
+                                <SparklesIcon className="w-6 h-6 text-violet-400" />
                                 <p className="text-sm">Your post preview will appear here</p>
                             </div>
                         </div>
@@ -460,7 +461,7 @@ export default function PostCreator() {
                     {/* Header */}
                     <div className="flex items-center justify-between px-6 py-4 border-b border-teal-500/20 bg-teal-900/10">
                         <div className="flex items-center gap-3">
-                            <div className="w-8 h-8 rounded-lg bg-teal-500/20 flex items-center justify-center text-teal-300 text-sm">🧍</div>
+                            <UserIcon className="w-8 h-8 rounded-lg bg-teal-500/20 flex items-center justify-center text-teal-300" />
                             <div>
                                 <h3 className="text-sm font-semibold text-teal-300">Humanized Version</h3>
                                 <p className="text-xs text-teal-400/60">AI language stripped — reads like a real person wrote it</p>
@@ -516,17 +517,17 @@ export default function PostCreator() {
             {/* Analysis Details */}
             {analysis && (
                 <div className="bg-slate-800/30 border border-slate-700/30 rounded-2xl p-6">
-                    <h3 className="text-lg font-semibold text-white mb-4">📊 Structural Analysis</h3>
+                    <h3 className="text-lg font-semibold text-white mb-4"><ChartBarIcon className="w-5 h-5 inline-block mr-1" /> Structural Analysis</h3>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                         {[
-                            { label: 'Words', value: analysis.wordCount, icon: '📝' },
-                            { label: 'Characters', value: analysis.charCount, icon: '🔤' },
-                            { label: 'Sentences', value: analysis.sentenceCount, icon: '📄' },
-                            { label: 'Hashtags', value: analysis.hashtagCount, icon: '#️⃣' },
-                            { label: 'Questions', value: analysis.questionCount, icon: '❓' },
-                            { label: 'Emojis', value: analysis.emojiCount, icon: '😀' },
-                            { label: 'Lines', value: analysis.lineCount, icon: '📋' },
-                            { label: 'Avg words/sent', value: analysis.avgWordsPerSentence, icon: '📐' },
+                            { label: 'Words', value: analysis.wordCount, icon: <PencilIcon className="w-5 h-5 inline-block mr-1" /> },
+                            { label: 'Characters', value: analysis.charCount, icon: <DocumentIcon className="w-5 h-5 inline-block mr-1" /> },
+                            { label: 'Sentences', value: analysis.sentenceCount, icon: <ChatBubbleLeftEllipsisIcon className="w-5 h-5 inline-block mr-1" /> },
+                            { label: 'Hashtags', value: analysis.hashtagCount, icon: <TagIcon className="w-5 h-5 inline-block mr-1" /> },
+                            { label: 'Questions', value: analysis.questionCount, icon: <QuestionMarkCircleIcon className="w-5 h-5 inline-block mr-1" /> },
+                            { label: 'Emojis', value: analysis.emojiCount, icon: <FaceSmileIcon className="w-5 h-5 inline-block mr-1" /> },
+                            { label: 'Lines', value: analysis.lineCount, icon: <Bars3Icon className="w-5 h-5 inline-block mr-1" /> },
+                            { label: 'Avg words/sent', value: analysis.avgWordsPerSentence, icon: <ChartBarIcon className="w-5 h-5 inline-block mr-1" /> },
                         ].map((stat) => (
                             <div key={stat.label} className="bg-slate-800/40 rounded-xl p-4 border border-slate-700/30">
                                 <div className="flex items-center gap-2 mb-1">
@@ -571,11 +572,11 @@ export default function PostCreator() {
                     {/* Hook / CTA display */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
                         <div className="bg-slate-800/40 rounded-xl p-4 border border-slate-700/30">
-                            <span className="text-xs text-slate-400">🪝 Hook</span>
+                            <span className="text-xs text-slate-400"><SparklesIcon className="w-5 h-5 inline-block mr-1" /> Hook</span>
                             <p className="text-sm text-white mt-2 leading-relaxed">{analysis.hook || 'Not detected'}</p>
                         </div>
                         <div className="bg-slate-800/40 rounded-xl p-4 border border-slate-700/30">
-                            <span className="text-xs text-slate-400">📢 CTA</span>
+                            <span className="text-xs text-slate-400"><ChatBubbleLeftEllipsisIcon className="w-5 h-5 inline-block mr-1" /> CTA</span>
                             <p className="text-sm text-white mt-2 leading-relaxed">{analysis.cta || 'No CTA detected'}</p>
                         </div>
                     </div>

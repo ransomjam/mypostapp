@@ -11,17 +11,17 @@ interface DemoUser {
 
 const demoUsers: DemoUser[] = [
     {
-        email: 'demo@postiq.com',
+        email: 'demo@mypostapp.com',
         password: 'demo1234',
         planType: 'FREE',
     },
     {
-        email: 'pro@postiq.com',
+        email: 'pro@mypostapp.com',
         password: 'pro12345',
         planType: 'PRO',
     },
     {
-        email: 'enterprise@postiq.com',
+        email: 'enterprise@mypostapp.com',
         password: 'enter1234',
         planType: 'ENTERPRISE',
     },

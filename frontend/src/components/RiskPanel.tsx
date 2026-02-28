@@ -1,6 +1,7 @@
 'use client';
 
 import { RiskResult } from '@/lib/types';
+import { ShieldCheckIcon, LightBulbIcon, CheckCircleIcon } from '@heroicons/react/24/outline';
 
 interface RiskPanelProps {
     risk: RiskResult;
@@ -22,7 +23,7 @@ export default function RiskPanel({ risk }: RiskPanelProps) {
     return (
         <div className="bg-slate-800/30 border border-slate-700/30 rounded-2xl p-6">
             <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-semibold text-white">🛡️ Risk Detection</h3>
+                <h3 className="text-lg font-semibold text-white"><ShieldCheckIcon className="w-5 h-5 inline-block mr-1" /> Risk Detection</h3>
                 <span className={`text-sm font-bold uppercase ${riskLevelStyle[risk.riskLevel]}`}>
                     {risk.riskLevel} risk
                 </span>
@@ -53,13 +54,13 @@ export default function RiskPanel({ risk }: RiskPanelProps) {
                                 <span className="text-[10px] uppercase font-bold">{w.severity}</span>
                             </div>
                             <p className="text-xs opacity-80 mb-1">{w.message}</p>
-                            <p className="text-xs opacity-60">💡 {w.suggestion}</p>
+                            <p className="text-xs opacity-60"><LightBulbIcon className="w-4 h-4 inline-block mr-1" /> {w.suggestion}</p>
                         </div>
                     ))}
                 </div>
             ) : (
                 <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl text-center mb-4">
-                    <span className="text-2xl">✅</span>
+                    <CheckCircleIcon className="w-6 h-6 text-emerald-400 mx-auto" />
                     <p className="text-sm text-emerald-400 mt-1 font-medium">No issues detected!</p>
                 </div>
             )}

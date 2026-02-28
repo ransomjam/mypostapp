@@ -27,7 +27,7 @@ export default function HomePage() {
       <nav className="relative z-10 flex items-center justify-between px-8 py-6 max-w-7xl mx-auto">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-violet-500 to-indigo-600 flex items-center justify-center text-white font-bold text-lg shadow-lg shadow-violet-500/25">P</div>
-          <span className="text-xl font-bold text-white">Post<span className="text-violet-400">IQ</span></span>
+          <span className="text-xl font-bold text-white">my<span className="text-violet-400">postapp</span></span>
         </div>
         <div className="flex items-center gap-4">
           <Link href="/login" className="px-5 py-2 text-sm text-slate-300 hover:text-white transition-colors">Sign in</Link>
@@ -48,7 +48,7 @@ export default function HomePage() {
         </h1>
 
         <p className="text-lg text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
-          PostIQ generates, analyses, and optimises your social media content with AI.
+          mypostapp generates, analyses, and optimises your social media content with AI.
           Get engagement scores, risk detection, platform adaptation, and image optimisation — all in one platform.
         </p>
 
@@ -79,8 +79,8 @@ export default function HomePage() {
 
       {/* Footer */}
       <footer className="relative z-10 border-t border-slate-800 py-8 text-center text-xs text-slate-500">
-        <p>PostIQ is not affiliated with Instagram, LinkedIn, X, Facebook, or TikTok. All previews are generic simulations.</p>
-        <p className="mt-1">© {new Date().getFullYear()} PostIQ. All rights reserved.</p>
+        <p>mypostapp is not affiliated with Instagram, LinkedIn, X, Facebook, or TikTok. All previews are generic simulations.</p>
+        <p className="mt-1">© {new Date().getFullYear()} mypostapp. All rights reserved.</p>
       </footer>
     </div>
   );

@@ -35,7 +35,7 @@ export default function LoginPage() {
                 <div className="text-center mb-8">
                     <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-violet-500 to-indigo-600 flex items-center justify-center text-white font-bold text-2xl shadow-lg shadow-violet-500/25 mx-auto mb-4">P</div>
                     <h1 className="text-2xl font-bold text-white">Welcome back</h1>
-                    <p className="text-sm text-slate-400 mt-1">Sign in to your PostIQ account</p>
+                    <p className="text-sm text-slate-400 mt-1">Sign in to your mypostapp account</p>
                 </div>
 
                 <form onSubmit={handleSubmit} className="space-y-4">

@@ -3,7 +3,7 @@ import "./globals.css";
 import { AuthProvider } from "@/lib/auth";
 
 export const metadata: Metadata = {
-  title: "PostIQ — AI Social Media Intelligence Platform",
+  title: "mypostapp — AI Social Media Intelligence Platform",
   description: "Generate, analyse, and optimise social media posts with AI-powered intelligence. Score engagement potential, detect risks, and adapt content for every platform.",
   keywords: "social media, AI, post generator, engagement scoring, content optimisation",
 };

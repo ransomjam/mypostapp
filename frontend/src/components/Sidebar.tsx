@@ -3,24 +3,25 @@
 import { useAuth } from '@/lib/auth';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { PencilIcon, PuzzlePieceIcon, CalendarIcon, SparklesIcon, ArrowPathIcon, ChartBarIcon, PhotoIcon, FolderIcon, ShieldCheckIcon } from '@heroicons/react/24/outline';
 
 export default function Sidebar() {
     const { user, logout } = useAuth();
     const pathname = usePathname();
 
     const navItems = [
-        { href: '/dashboard', label: 'Create Post', icon: '✍️' },
-        { href: '/dashboard/knowledge', label: 'Knowledge Base', icon: '🧠' },
-        { href: '/dashboard/plan', label: 'Content Plan', icon: '📅' },
-        { href: '/dashboard/style', label: 'Style Samples', icon: '✨' },
-        { href: '/dashboard/adapt', label: 'Adapt Post', icon: '🔄' },
-        { href: '/dashboard/analyse', label: 'Analyse', icon: '📊' },
-        { href: '/dashboard/images', label: 'Image Optimiser', icon: '🖼️' },
-        { href: '/dashboard/history', label: 'History', icon: '📂' },
+        { href: '/dashboard', label: 'Create Post', icon: <PencilIcon className="w-5 h-5" /> },
+        { href: '/dashboard/knowledge', label: 'Knowledge Base', icon: <PuzzlePieceIcon className="w-5 h-5" /> },
+        { href: '/dashboard/plan', label: 'Content Plan', icon: <CalendarIcon className="w-5 h-5" /> },
+        { href: '/dashboard/style', label: 'Style Samples', icon: <SparklesIcon className="w-5 h-5" /> },
+        { href: '/dashboard/adapt', label: 'Adapt Post', icon: <ArrowPathIcon className="w-5 h-5" /> },
+        { href: '/dashboard/analyse', label: 'Analyse', icon: <ChartBarIcon className="w-5 h-5" /> },
+        { href: '/dashboard/images', label: 'Image Optimiser', icon: <PhotoIcon className="w-5 h-5" /> },
+        { href: '/dashboard/history', label: 'History', icon: <FolderIcon className="w-5 h-5" /> },
     ];
 
     if (user?.role === 'ADMIN') {
-        navItems.push({ href: '/admin/samples', label: 'Admin Pattern Scraping', icon: '🛡️' });
+        navItems.push({ href: '/admin/samples', label: 'Admin Pattern Scraping', icon: <ShieldCheckIcon className="w-5 h-5" /> });
     }
 
 
@@ -33,7 +34,7 @@ export default function Sidebar() {
                         P
                     </div>
                     <div>
-                        <h1 className="text-xl font-bold text-white tracking-tight">Post<span className="text-violet-400">IQ</span></h1>
+                        <h1 className="text-xl font-bold text-white tracking-tight">my<span className="text-violet-400">postapp</span></h1>
                         <p className="text-[10px] text-slate-500 uppercase tracking-widest">Intelligence Platform</p>
                     </div>
                 </Link>

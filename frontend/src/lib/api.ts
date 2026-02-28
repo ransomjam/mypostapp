@@ -7,21 +7,21 @@ class ApiClient {
 
     constructor() {
         if (typeof window !== 'undefined') {
-            this.token = localStorage.getItem('postiq_token');
+            this.token = localStorage.getItem('mypostapp_token');
         }
     }
 
     setToken(token: string) {
         this.token = token;
         if (typeof window !== 'undefined') {
-            localStorage.setItem('postiq_token', token);
+            localStorage.setItem('mypostapp_token', token);
         }
     }
 
     clearToken() {
         this.token = null;
         if (typeof window !== 'undefined') {
-            localStorage.removeItem('postiq_token');
+            localStorage.removeItem('mypostapp_token');
         }
     }
 

@@ -1,7 +1,7 @@
 {
-  "name": "postiq-backend",
+  "name": "mypostapp-backend",
   "version": "1.0.0",
-  "description": "PostIQ AI Social Media Pre-Post Intelligence Platform - Backend API",
+  "description": "mypostapp AI Social Media Pre-Post Intelligence Platform - Backend API",
   "main": "dist/index.js",
   "scripts": {
     "dev": "tsx watch src/index.ts",

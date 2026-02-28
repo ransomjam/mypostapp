@@ -1,6 +1,7 @@
 'use client';
 
 import { ScoringResult } from '@/lib/types';
+import { SparklesIcon, ChartBarIcon, HeartIcon, ArrowsRightLeftIcon, TagIcon, BookOpenIcon, QuestionMarkCircleIcon, ExclamationTriangleIcon, LightBulbIcon } from '@heroicons/react/24/outline';
 
 interface ScorePanelProps {
     score: ScoringResult;
@@ -27,13 +28,13 @@ export default function ScorePanel({ score, onFix, isFixing }: ScorePanelProps) 
     };
 
     const breakdownItems = [
-        { key: 'hookStrength', label: '🪝 Hook Strength', data: score.breakdown.hookStrength },
-        { key: 'ctaPresence', label: '📢 CTA Presence', data: score.breakdown.ctaPresence },
-        { key: 'emotionalIntensity', label: '💛 Emotional Intensity', data: score.breakdown.emotionalIntensity },
-        { key: 'platformLengthCompliance', label: '📏 Length Compliance', data: score.breakdown.platformLengthCompliance },
-        { key: 'hashtagOptimisation', label: '#️⃣ Hashtag Optimisation', data: score.breakdown.hashtagOptimisation },
-        { key: 'readabilityMatch', label: '📖 Readability', data: score.breakdown.readabilityMatch },
-        { key: 'questionEngagement', label: '❓ Question Engagement', data: score.breakdown.questionEngagement },
+        { key: 'hookStrength', label: (<><SparklesIcon className="w-4 h-4 inline-block mr-1" /> Hook Strength</>), data: score.breakdown.hookStrength },
+        { key: 'ctaPresence', label: (<><ChartBarIcon className="w-4 h-4 inline-block mr-1" /> CTA Presence</>), data: score.breakdown.ctaPresence },
+        { key: 'emotionalIntensity', label: (<><HeartIcon className="w-4 h-4 inline-block mr-1" /> Emotional Intensity</>), data: score.breakdown.emotionalIntensity },
+        { key: 'platformLengthCompliance', label: (<><ArrowsRightLeftIcon className="w-4 h-4 inline-block mr-1" /> Length Compliance</>), data: score.breakdown.platformLengthCompliance },
+        { key: 'hashtagOptimisation', label: (<><TagIcon className="w-4 h-4 inline-block mr-1" /> Hashtag Optimisation</>), data: score.breakdown.hashtagOptimisation },
+        { key: 'readabilityMatch', label: (<><BookOpenIcon className="w-4 h-4 inline-block mr-1" /> Readability</>), data: score.breakdown.readabilityMatch },
+        { key: 'questionEngagement', label: (<><QuestionMarkCircleIcon className="w-4 h-4 inline-block mr-1" /> Question Engagement</>), data: score.breakdown.questionEngagement },
     ];
 
     // Score gauge SVG
@@ -42,7 +43,7 @@ export default function ScorePanel({ score, onFix, isFixing }: ScorePanelProps) 
 
     return (
         <div className="bg-slate-800/30 border border-slate-700/30 rounded-2xl p-6">
-            <h3 className="text-lg font-semibold text-white mb-4">📈 Engagement Score</h3>
+            <h3 className="text-lg font-semibold text-white mb-4"><ChartBarIcon className="w-5 h-5 inline-block mr-1" /> Engagement Score</h3>
 
             {/* Score Gauge */}
             <div className="flex items-center gap-6 mb-6">
@@ -94,7 +95,7 @@ export default function ScorePanel({ score, onFix, isFixing }: ScorePanelProps) 
             {score.breakdown.penalties.reasons.length > 0 && (
                 <div className="mb-4 p-3 bg-red-500/10 border border-red-500/20 rounded-xl">
                     <p className="text-xs text-red-400 font-medium mb-1">
-                        ⚠️ Penalties ({score.breakdown.penalties.score} pts)
+                        <ExclamationTriangleIcon className="w-4 h-4 inline-block mr-1" /> Penalties ({score.breakdown.penalties.score} pts)
                     </p>
                     {score.breakdown.penalties.reasons.map((r, i) => (
                         <p key={i} className="text-xs text-red-300/80">• {r}</p>
@@ -105,7 +106,7 @@ export default function ScorePanel({ score, onFix, isFixing }: ScorePanelProps) 
             {/* Suggestions */}
             {score.suggestions.length > 0 && (
                 <div>
-                    <p className="text-sm font-medium text-white mb-2">💡 Improvement Suggestions</p>
+                    <p className="text-sm font-medium text-white mb-2"><LightBulbIcon className="w-4 h-4 inline-block mr-1" /> Improvement Suggestions</p>
                     <div className="space-y-2">
                         {score.suggestions.map((s, i) => (
                             <div key={i} className="flex items-start gap-2 text-xs text-slate-300 bg-slate-800/40 p-3 rounded-lg border border-slate-700/30">
@@ -125,7 +126,7 @@ export default function ScorePanel({ score, onFix, isFixing }: ScorePanelProps) 
                         disabled={isFixing}
                         className="w-full py-3 bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold rounded-xl disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-lg shadow-orange-500/25 flex items-center justify-center gap-2"
                     >
-                        {isFixing ? 'Fixing Post...' : '✨ Fix Weak Points (AI)'}
+                        {isFixing ? 'Fixing Post...' : (<><SparklesIcon className="w-5 h-5 inline-block mr-1" /> Fix Weak Points (AI)</>)}
                     </button>
                     <p className="text-xs text-center text-slate-400 mt-2">
                         Get a revised version addressing these suggestions
