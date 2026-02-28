@@ -1,0 +1,162 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+enum PlanType {
+  FREE
+  PRO
+  ENTERPRISE
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum Platform {
+  INSTAGRAM
+  LINKEDIN
+  X
+  FACEBOOK
+  TIKTOK
+}
+
+model User {
+  id            String         @id @default(uuid())
+  email         String         @unique
+  passwordHash  String         @map("password_hash")
+  role          Role           @default(USER)
+  planType      PlanType       @default(FREE) @map("plan_type")
+  createdAt     DateTime       @default(now()) @map("created_at")
+  updatedAt     DateTime       @updatedAt @map("updated_at")
+  posts           Post[]
+  brandProfiles   BrandProfile[]
+  contextProfiles ContextProfile[]
+  contentPlans    ContentPlan[]
+
+  @@map("users")
+}
+
+model Post {
+  id               String           @id @default(uuid())
+  userId           String           @map("user_id")
+  originalPrompt   String           @map("original_prompt") @db.Text
+  generatedContent String           @map("generated_content") @db.Text
+  platform         Platform
+  topic            String?
+  tone             String?
+  audience         String?
+  goal             String?
+  createdAt        DateTime         @default(now()) @map("created_at")
+  user             User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  analysisResults  AnalysisResult[]
+
+  @@index([userId])
+  @@index([platform])
+  @@map("posts")
+}
+
+model AnalysisResult {
+  id               String   @id @default(uuid())
+  postId           String   @map("post_id")
+  engagementScore  Float    @map("engagement_score")
+  hookScore        Float    @map("hook_score")
+  ctaScore         Float    @map("cta_score")
+  readabilityScore Float    @map("readability_score")
+  hashtagScore     Float    @map("hashtag_score")
+  emotionalScore   Float    @default(0) @map("emotional_score")
+  lengthScore      Float    @default(0) @map("length_score")
+  questionScore    Float    @default(0) @map("question_score")
+  riskFlags        Json     @default("[]") @map("risk_flags")
+  breakdownJson    Json     @map("breakdown_json")
+  suggestions      Json     @default("[]")
+  createdAt        DateTime @default(now()) @map("created_at")
+  post             Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+
+  @@index([postId])
+  @@map("analysis_results")
+}
+
+// Phase 2 Ready
+model BrandProfile {
+  id              String   @id @default(uuid())
+  userId          String   @map("user_id")
+  name            String
+  tonePreferences Json     @default("{}") @map("tone_preferences")
+  audienceType    String?  @map("audience_type")
+  writingStyle    String?  @map("writing_style")
+  brandVoice      String?  @map("brand_voice") @db.Text
+  keywords        Json     @default("[]")
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("brand_profiles")
+}
+
+model ContextProfile {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  name        String
+  type        String   @default("OTHER") // ORGANIZATION, PROGRAM, EVENT, PRODUCT, OTHER
+  description String   @db.Text
+  keywords    Json     @default("[]")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("context_profiles")
+}
+
+model ScrapedSample {
+  id              String   @id @default(uuid())
+  platform        Platform
+  url             String?
+  content         String   @db.Text
+  engagementScore Int      @default(0) @map("engagement_score")
+  isActive        Boolean  @default(true) @map("is_active")
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+
+  @@map("scraped_samples")
+}
+
+model ContentPlan {
+  id              String   @id @default(uuid())
+  userId          String   @map("user_id")
+  planTitle       String
+  strategySummary String   @db.Text
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+
+  user            User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  posts           PlanPost[]
+
+  @@index([userId])
+  @@map("content_plans")
+}
+
+model PlanPost {
+  id           String   @id @default(uuid())
+  planId       String   @map("plan_id")
+  day          String
+  concept      String   @db.Text
+  format       String
+  hookIdea     String   @db.Text
+  callToAction String   @db.Text
+  whyItWorks   String   @db.Text
+
+  contentPlan  ContentPlan @relation(fields: [planId], references: [id], onDelete: Cascade)
+
+  @@index([planId])
+  @@map("plan_posts")
+}

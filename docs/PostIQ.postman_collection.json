@@ -1,0 +1,256 @@
+{
+    "info": {
+        "name": "PostIQ API",
+        "description": "PostIQ – AI Social Media Pre-Post Intelligence Platform API Collection",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "auth": {
+        "type": "bearer",
+        "bearer": [
+            {
+                "key": "token",
+                "value": "{{jwt_token}}",
+                "type": "string"
+            }
+        ]
+    },
+    "variable": [
+        {
+            "key": "base_url",
+            "value": "http://localhost:4000/api"
+        },
+        {
+            "key": "jwt_token",
+            "value": ""
+        }
+    ],
+    "item": [
+        {
+            "name": "Health Check",
+            "request": {
+                "method": "GET",
+                "url": "{{base_url}}/health"
+            }
+        },
+        {
+            "name": "Auth",
+            "item": [
+                {
+                    "name": "Register",
+                    "request": {
+                        "method": "POST",
+                        "url": "{{base_url}}/auth/register",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{ \"email\": \"test@example.com\", \"password\": \"password123\" }"
+                        }
+                    },
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "var data = pm.response.json(); if (data.data && data.data.token) { pm.collectionVariables.set('jwt_token', data.data.token); }"
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Login",
+                    "request": {
+                        "method": "POST",
+                        "url": "{{base_url}}/auth/login",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{ \"email\": \"test@example.com\", \"password\": \"password123\" }"
+                        }
+                    },
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "var data = pm.response.json(); if (data.data && data.data.token) { pm.collectionVariables.set('jwt_token', data.data.token); }"
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Get Profile",
+                    "request": {
+                        "method": "GET",
+                        "url": "{{base_url}}/auth/profile"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Post Generation",
+            "item": [
+                {
+                    "name": "Generate Post",
+                    "request": {
+                        "method": "POST",
+                        "url": "{{base_url}}/generate",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{ \"topic\": \"5 productivity hacks for remote workers\", \"platform\": \"INSTAGRAM\", \"tone\": \"professional\", \"lengthPreference\": \"medium\", \"audience\": \"tech professionals\" }"
+                        }
+                    }
+                },
+                {
+                    "name": "Get History",
+                    "request": {
+                        "method": "GET",
+                        "url": "{{base_url}}/generate/history?page=1&limit=20"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Platform Adaptation",
+            "item": [
+                {
+                    "name": "Adapt Post",
+                    "request": {
+                        "method": "POST",
+                        "url": "{{base_url}}/adapt",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{ \"content\": \"Your original post content here...\", \"targetPlatforms\": [\"LINKEDIN\", \"X\", \"TIKTOK\"] }"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Analysis",
+            "item": [
+                {
+                    "name": "Analyse Post",
+                    "request": {
+                        "method": "POST",
+                        "url": "{{base_url}}/analyse",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{ \"content\": \"Post content to analyse...\", \"platform\": \"INSTAGRAM\" }"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Scoring",
+            "item": [
+                {
+                    "name": "Score Post",
+                    "request": {
+                        "method": "POST",
+                        "url": "{{base_url}}/score",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{ \"content\": \"Post to score...\", \"platform\": \"INSTAGRAM\" }"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Risk Detection",
+            "item": [
+                {
+                    "name": "Detect Risks",
+                    "request": {
+                        "method": "POST",
+                        "url": "{{base_url}}/risk",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{ \"content\": \"Post to check for risks...\" }"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Image Optimisation",
+            "item": [
+                {
+                    "name": "Optimise Image",
+                    "request": {
+                        "method": "POST",
+                        "url": "{{base_url}}/image/optimise",
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "image",
+                                    "type": "file",
+                                    "src": ""
+                                },
+                                {
+                                    "key": "ratios",
+                                    "value": "1:1",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "ratios",
+                                    "value": "4:5",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "ratios",
+                                    "value": "16:9",
+                                    "type": "text"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}
