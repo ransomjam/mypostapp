@@ -26,10 +26,17 @@ const app = express();
 
 // Security
 app.use(helmet());
+const allowedOrigins = config.cors.frontendUrl.split(',').map(url => url.trim());
 app.use(cors({
-    origin: config.cors.frontendUrl.includes(',')
-        ? config.cors.frontendUrl.split(',').map(url => url.trim())
-        : config.cors.frontendUrl,
+    origin: (origin, callback) => {
+        // Allow requests with no origin (mobile apps, curl, etc.)
+        if (!origin) return callback(null, true);
+        // Allow explicitly configured origins
+        if (allowedOrigins.includes(origin)) return callback(null, true);
+        // Allow any Vercel preview/deployment URL
+        if (origin.endsWith('.vercel.app')) return callback(null, true);
+        callback(new Error('Not allowed by CORS'));
+    },
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
